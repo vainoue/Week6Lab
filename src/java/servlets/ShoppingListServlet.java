@@ -53,7 +53,15 @@ public class ShoppingListServlet extends HttpServlet {
         
         if (action.equals("register")) {
             String nome_usuario = request.getParameter("username");
-            session.setAttribute("username", nome_usuario);
+            if (nome_usuario.equals("")) {
+                String message = "Empty username";
+                request.setAttribute("empty_username", message);
+                getServletContext().getRequestDispatcher("/WEB-INF/register.jsp")
+                        .forward(request, response);
+                return;
+            } else {
+                session.setAttribute("username", nome_usuario);
+            }
         } else if (action.equals("add")) {
             String get_item = request.getParameter("input_item");
             

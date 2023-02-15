@@ -15,9 +15,10 @@
         <h1>Shopping List</h1>
         <form action="ShoppingList" method="post">
             Username:
-            <input type="text" name="username" value="${username}">
+            <input type="text" name="username">
             <input type="hidden" name="action" value="register">
             <input type="submit" value="Register name">
         </form>
+        <p>${empty_username}</p>
     </body>
 </html>
