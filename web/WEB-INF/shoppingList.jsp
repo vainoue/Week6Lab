@@ -25,14 +25,22 @@
         </form>
         <form action="" method="post">
             <ul>
-                <c:forEach var="add_item" items="${list_items}">
+                <c:forEach var="add_list" items="${list_page}">
                     <li>
-                        <input type="radio" name="item" value="${add_item}">${add_item}
+                        <input type="radio" name="item" value="${add_list}">${add_list}
                     </li>
                 </c:forEach>
             </ul>
             <input type="submit" value="Delete">
             <input type="hidden" name="action" value="delete">
         </form>
+
+        <c:if test="${page_number > 1}">
+            <a href="ShoppingList?page=${page_number - 1}">&lt;</a>&nbsp;|
+        </c:if>
+        <c:if test="${list_items.size() > page_number * 10}">
+            <a href="ShoppingList?page=${page_number + 1}">&gt;</a>
+        </c:if>
+        <h3>Page ${page_number}</h3>
     </body>
 </html>
